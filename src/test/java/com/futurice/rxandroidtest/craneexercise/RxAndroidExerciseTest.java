@@ -1,4 +1,8 @@
-package com.futurice.rxandroidtest;
+package com.futurice.rxandroidtest.craneexercise;
+
+import com.futurice.rxandroidtest.craneexercise.Crane;
+import com.futurice.rxandroidtest.craneexercise.Paper;
+import com.futurice.rxandroidtest.craneexercise.RxAndroidExercise;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +35,7 @@ public class RxAndroidExerciseTest {
                 redPaper
         );
     }
+
 
     @Test
     public void noOrderMaintained() {
@@ -78,7 +83,9 @@ public class RxAndroidExerciseTest {
         assertEquals("blue", cranes.get(0).getColor());
         assertEquals("green", cranes.get(1).getColor());
         assertEquals("red", cranes.get(2).getColor());
+        testSubscriber.assertCompleted();
     }
+
 
     @Test
     public void orderMaintainedParallelNonCompleting() {
@@ -95,5 +102,7 @@ public class RxAndroidExerciseTest {
         assertEquals("blue", cranes.get(0).getColor());
         assertEquals("green", cranes.get(1).getColor());
         assertEquals("red", cranes.get(2).getColor());
+        testScheduler.advanceTimeBy(500,TimeUnit.MILLISECONDS);
+        testSubscriber.assertNotCompleted();
     }
 }

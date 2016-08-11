@@ -1,4 +1,4 @@
-package com.futurice.rxandroidtest;
+package com.futurice.rxandroidtest.craneexercise;
 
 import java.util.concurrent.TimeUnit;
 
