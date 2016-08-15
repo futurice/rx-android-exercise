@@ -28,7 +28,8 @@ public class ExerciseArticlesTest {
         TestSubscriber<List<Article>> testSubscriber = new TestSubscriber<>();
 
 
-        exerciseArticle.getArticleStream(dataLayer.fetchArticlesIdsFromDailyNews(), dataLayer.fetchArticlesIdsFromTime()).subscribe(testSubscriber);
+        exerciseArticle.getArticleStream(dataLayer.fetchArticlesIdsFromDailyNews(),
+                dataLayer.fetchArticlesIdsFromTime()).subscribe(testSubscriber);
         testScheduler.advanceTimeBy(400, TimeUnit.MILLISECONDS);
 
         assertEquals(4, testSubscriber.getOnNextEvents().get(0).size());
