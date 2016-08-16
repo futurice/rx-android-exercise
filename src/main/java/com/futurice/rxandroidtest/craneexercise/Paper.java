@@ -1,4 +1,4 @@
-package com.futurice.rxandroidtest;
+package com.futurice.rxandroidtest.craneexercise;
 
 /**
  * Created by ttuo on 30/09/15.
