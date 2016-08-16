@@ -25,8 +25,8 @@ public class MultiCastingExercise {
 
     public static Observable<Integer> sendDelayedItem(Scheduler scheduler, List<Integer> array) {
         return Observable.from(array)
-                .doOnNext(i -> count++)
-                .delay(200, TimeUnit.MILLISECONDS, scheduler);
+                .concatMap(id -> Observable.just(id).delay(50, TimeUnit.MILLISECONDS, scheduler))
+                .doOnNext(i -> count++);
     }
 
 
@@ -66,10 +66,4 @@ public class MultiCastingExercise {
         return sendDelayedItem(scheduler, array)
                 .replay().autoConnect();
     }
-
-    public static Observable<Integer> getMulticast4Integer(Scheduler scheduler, List<Integer> array) {
-        return sendDelayedItem(scheduler, array)
-                .replay().refCount();
-    }
-
 }
