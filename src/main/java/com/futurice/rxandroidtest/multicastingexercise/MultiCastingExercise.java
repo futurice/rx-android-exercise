@@ -44,7 +44,8 @@ public class MultiCastingExercise {
      */
     public static Observable<Integer> getMulticastInteger(Scheduler scheduler, List<Integer> array) {
         return sendDelayedItem(scheduler, array)
-                .publish().autoConnect(2);
+                //". write here right combination of operator : publish/autoConnect/refcount/replay"
+                ;
     }
 
 
@@ -60,7 +61,8 @@ public class MultiCastingExercise {
      */
     public static Observable<Integer> getMulticast2Integer(Scheduler scheduler, List<Integer> array) {
         return sendDelayedItem(scheduler, array)
-                .publish().refCount();
+                //". write here right combination of operator : publish/autoConnect/refcount/replay"
+                ;
     }
 
 
@@ -77,6 +79,7 @@ public class MultiCastingExercise {
      */
     public static Observable<Integer> getMulticast3Integer(Scheduler scheduler, List<Integer> array) {
         return sendDelayedItem(scheduler, array)
-                .replay().autoConnect();
+                //". write here right combination of operator : publish/autoConnect/refcount/replay"
+                ;
     }
 }
