@@ -21,6 +21,8 @@ public class MultiCastingExercise {
     /**
      * In ALl exercise use a combination of publish/autoConnect/refcount/replay to make this observable
      * multicasting in the way you want.
+     *
+     * This observable send each item of the array every 50ms
      */
 
     public static Observable<Integer> sendDelayedItem(Scheduler scheduler, List<Integer> array) {
@@ -31,8 +33,11 @@ public class MultiCastingExercise {
 
 
     /**
-     * Multicast, start the emission when you have two subscriber, when your observable is finished emiting
-     * if another subscriber subscribe he won't receive anything
+     * Multicast, start the emission when you have two subscriber, and share the items among the subscribers.
+     *
+     * When your observable has finished emitting all the items of the array, he wont emmit a thing even if
+     * a later subsriber subscribes.
+     *
      * @param scheduler
      * @param array
      * @return
@@ -44,8 +49,11 @@ public class MultiCastingExercise {
 
 
     /**
-     * start the emission when as soon as you have one subscriber, when your observable is finished emiting
-     * if another subscriber subscribe it will re-trigger the observable and emit.
+     * Multicast, start the emission as soon as a subscriber subscribe, and share the items among the subscribers currently connected.
+     *
+     * When your observable has finished emitting all the items of the array, if
+     * a later subsriber subscribes, the observable we ll start the work again.
+     *
      * @param scheduler
      * @param array
      * @return
@@ -57,7 +65,12 @@ public class MultiCastingExercise {
 
 
     /**
-     * Multicast, multicast as soon as one observer subscribes, if a later subscriber subscribe, he gets all the past events
+     * Multicast, start the emission as soon as a subscriber subscribe, and share the items among the subscribers currently connected.
+     *
+     * When your observable has finished emitting all the items of the array, if
+     * a later subsriber subscribes, the observable we ll replay the sequence that he has emitted, keeping it in memory.
+     *
+
      * @param scheduler
      * @param array
      * @return
