@@ -29,17 +29,7 @@ public class ExerciseArticle {
     public Observable<List<Article>> getArticleStream(Observable<List<Integer>> articleIdsObservable1,
                                                       Observable<List<Integer>> articleIdsObservable2) {
 
-        return Observable.combineLatest(articleIdsObservable1, articleIdsObservable2,
-                (listOne, listTwo) -> {
-                    List<Integer> newList = new ArrayList<>(listOne);
-                    newList.addAll(listTwo);
-                    return newList;
-                })
-                .flatMap(list -> Observable.from(list)
-                        .filter(id -> id % 2 == 0)
-                        .doOnNext(id -> System.out.println(id))
-                        .flatMap(dataLayer::fetchArticle)
-                        .toList());
+        return null;
     }
 
     /**
@@ -53,16 +43,6 @@ public class ExerciseArticle {
     public Observable<List<Article>> getArticleStreamOptimised(Observable<List<Integer>> articleIdsObservable1,
                                                       Observable<List<Integer>> articleIdsObservable2) {
 
-        return Observable.combineLatest(articleIdsObservable1, articleIdsObservable2,
-                (listOne, listTwo) -> {
-                    List<Integer> newList = new ArrayList<>(listOne);
-                    newList.addAll(listTwo);
-                    return newList;
-                })
-                .switchMap(list -> Observable.from(list)
-                        .filter(id -> id % 2 == 0)
-                        .doOnNext(id -> System.out.println(id))
-                        .flatMap(dataLayer::fetchArticle)
-                        .toList());
+        return null;
     }
 }
