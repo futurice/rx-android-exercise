@@ -33,4 +33,8 @@ or do it per exercise and run test by packages:
 
  1. Create an observable which combine two source of ids, for each id, fetch the actual article.
 
+## multicasting exercise
+
+ 1. find the right combination of pulish/autoconnect/connect/refcount/replay for each exercise
+
 
